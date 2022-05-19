@@ -1,4 +1,4 @@
-e1e452868ab2d9ae4c2cd81adc8b5455 *DESCRIPTION
+0a606d8bb261fa92d20988e2a87d447a *DESCRIPTION
 09254be78f5f51877e1e34f645f95a1e *NAMESPACE
 78d740a045bc1352da16b0489a796ca7 *R/DRstat.R
 7abf740a6106c5365c40be5fe43120bf *R/RcppExports.R
@@ -6,11 +6,11 @@ bb1fc73c04e5435cbc36109416f7f7ec *R/addLegend.R
 846f92f39399f3f2cd945c42cc6c57d8 *R/addPhylo.R
 5cfd21294fe787a8407f556ff757ef9d *R/addTraits.R
 0ffcaebac086557c300fc258f948c936 *R/betadiv_disparity.R
-4e4368f8296bd017c7faa5db847fb3e7 *R/betadiv_phylogenetic.R
+84201f6a3075850277acbcf126edd9f4 *R/betadiv_phylogenetic.R
 06e2da1d0849470e296a9ebabe2e6e04 *R/betadiv_taxonomic.R
 7997cf424f639d2a6f29a720dde3c81f *R/calcMeanShape.R
 a31368b3bed9cd5862519e6148a9f7ce *R/coordsFromEpmGrid.R
-455549cb27712b2faabe80c72467151e *R/createEPMgrid.R
+0dd05b991dc87af13f600a55261ea5d4 *R/createEPMgrid.R
 45a9b1f0ffa0f803b9d083bf012a6cc6 *R/customBetaDiv.R
 efd72bed3599a103016c51a4c9aaf046 *R/customGridMetric.R
 093f4b4580e515b81ca3ef5b49976f9f *R/data.R
@@ -24,7 +24,7 @@ de0aa03f0eeddd95ff3931058a97f184 *R/generateOccurrenceMatrix.R
 2b6721b6938af9977434d898501d3408 *R/getExtentOfList.R
 7a0cd2bad63a1a52ddfbc0f97c085599 *R/getMultiMapRamp.R
 7cc1a20640ae956cbe08b2c9c50440a3 *R/getSpPartialDisparities.R
-bf92814bd4100aebcf50a9474c378c72 *R/gridMetrics.R
+4d731fa924af7ca858e2dbca0e3db3d2 *R/gridMetrics.R
 bef048a422a8bfa1527be4fda19d2a4c *R/identify.epmGrid.R
 85e164390d81f1d80d14bb7ee47889e6 *R/interactiveExtent.R
 be8e88a8196bd61574b16186854a00a8 *R/plot.epmGrid.R
@@ -88,4 +88,4 @@ b073c4b5496ee12414c76b72ba4a2c8f *man/spCountIndex.Rd
 d30f2588ae6ce820d6843cfbfe110dcb *man/write.epmGrid.Rd
 8d0352f16152d17d8f9dbae2c3880864 *man/writeEpmSpatial.Rd
 6032ccad0769a458b73d40e883ed1d85 *src/RcppExports.cpp
-15715c1734ac9086081da83ea0f2a831 *src/epm_cppFunctions.cpp
+1a51b4b4caa38a5a23c62713745a598e *src/epm_cppFunctions.cpp
