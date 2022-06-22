@@ -1,4 +1,4 @@
-0a606d8bb261fa92d20988e2a87d447a *DESCRIPTION
+eeff012fe9c1ba574d6e2cab56c56591 *DESCRIPTION
 09254be78f5f51877e1e34f645f95a1e *NAMESPACE
 78d740a045bc1352da16b0489a796ca7 *R/DRstat.R
 7abf740a6106c5365c40be5fe43120bf *R/RcppExports.R
@@ -15,7 +15,7 @@ a31368b3bed9cd5862519e6148a9f7ce *R/coordsFromEpmGrid.R
 efd72bed3599a103016c51a4c9aaf046 *R/customGridMetric.R
 093f4b4580e515b81ca3ef5b49976f9f *R/data.R
 7d50e06f19d6f7aefb4a9e00418b4d1a *R/dropSpecies.R
-d374c76c19c28d0bcfc6639a62cbf480 *R/epm-package.R
+1cdc826e8013454973bb2d02c86a5b3b *R/epm-package.R
 639681868b2185008e308acb9fcffb20 *R/epmToPhyloComm.R
 b1e3a13c6eae2c50772d3277676742a7 *R/expandSpeciesCellList.R
 194095ebfe817900ea1f3ef187ebac2a *R/extractFromEpmGrid.R
@@ -24,10 +24,10 @@ de0aa03f0eeddd95ff3931058a97f184 *R/generateOccurrenceMatrix.R
 2b6721b6938af9977434d898501d3408 *R/getExtentOfList.R
 7a0cd2bad63a1a52ddfbc0f97c085599 *R/getMultiMapRamp.R
 7cc1a20640ae956cbe08b2c9c50440a3 *R/getSpPartialDisparities.R
-4d731fa924af7ca858e2dbca0e3db3d2 *R/gridMetrics.R
+8a286b831fc573f8e4d7f3c5757d099a *R/gridMetrics.R
 bef048a422a8bfa1527be4fda19d2a4c *R/identify.epmGrid.R
 85e164390d81f1d80d14bb7ee47889e6 *R/interactiveExtent.R
-be8e88a8196bd61574b16186854a00a8 *R/plot.epmGrid.R
+c4a926006602c522bf0c8ad78ba4b465 *R/plot.epmGrid.R
 5e11ef10ea98532e5b6475cf02002bb7 *R/plotDispersionField.R
 995cb747bab8947517f247a2e31e6014 *R/plotSpRange.R
 34797dfed9429e77b9d65344103033fc *R/print.epmGrid.R
@@ -43,11 +43,13 @@ e4fbbd56c6704ea6e0ee05d05c924056 *R/summary.EPMgrid.R
 9c568d9e0fbfda63a6c2def4e0205e54 *R/tableFromEpmGrid.R
 aecfd9002430ac944ed0f4c38cff19cc *R/write.epmGrid.R
 cd056a4563336cc1215bb5d108c3cd9b *R/writeEpmSpatial.R
+1961639f6f4f7f9efffa91b624b3d060 *build/partial.rdb
 4398fc0db1030d8bf4d5cfc94d695250 *data/tamiasEPM.rda
 a4cec0a1d995800135afb93a26956484 *data/tamiasPolyList.rda
 bd7d1e33634c5f6f1f8e802d03a22910 *data/tamiasTraits.rda
 82a9aacb032eb8fd50353ad549c6dd47 *data/tamiasTree.rda
 4ba79c732efb236d7b3ce8d89279e60c *data/tamiasTreeSet.rda
+dbca5a2955fa55b1874dc41ee2d620e3 *inst/CITATION
 6fb54de8927ac98bd7d07dda6ce9b1db *man/DRstat.Rd
 d73b728abce1f922f78a352148c17847 *man/addLegend.Rd
 a152b1f75a547664c3cb60fa0fe9d37d *man/addPhylo.Rd
@@ -62,7 +64,7 @@ d40d617841bcdd69069a8f13302e640e *man/createEPMgrid.Rd
 636284f5b0192a8637647e90bd04605d *man/customGridMetric.Rd
 0fd15bf963864670195189fd78a7ec26 *man/dropSpecies.Rd
 bffbd5e41e0230c592ca3fe85f70aa2a *man/epm-example.Rd
-360bac8fff3b2145a2baeedf5ba8a2a5 *man/epm.Rd
+f7d20628e1c0b5daf8b4a62d8f2250ca *man/epm.Rd
 427de925837b502f99a73849831771e1 *man/epmToPhyloComm.Rd
 d0fa3dce718d314c55449df3bd6bd478 *man/expandSpeciesCellList.Rd
 d058b42d52a2c35aa43f462fdd0d1e5d *man/extractFromEpmGrid.Rd
