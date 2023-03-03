@@ -1,4 +1,4 @@
-a5bc06c2dff1636c0ac50edecc15cac1 *DESCRIPTION
+2ca0f19e47fe7d20d7487f1dc229f451 *DESCRIPTION
 09254be78f5f51877e1e34f645f95a1e *NAMESPACE
 78d740a045bc1352da16b0489a796ca7 *R/DRstat.R
 7abf740a6106c5365c40be5fe43120bf *R/RcppExports.R
@@ -10,7 +10,7 @@ f023b9d662a8ae4b458faeddac4ee502 *R/addTraits.R
 06e2da1d0849470e296a9ebabe2e6e04 *R/betadiv_taxonomic.R
 7997cf424f639d2a6f29a720dde3c81f *R/calcMeanShape.R
 a31368b3bed9cd5862519e6148a9f7ce *R/coordsFromEpmGrid.R
-0c312a1853aec5db572448a1fcfc64d1 *R/createEPMgrid.R
+1521b5ba4901fced5c9aa51dec01e56a *R/createEPMgrid.R
 45a9b1f0ffa0f803b9d083bf012a6cc6 *R/customBetaDiv.R
 efd72bed3599a103016c51a4c9aaf046 *R/customGridMetric.R
 093f4b4580e515b81ca3ef5b49976f9f *R/data.R
@@ -43,13 +43,13 @@ e4fbbd56c6704ea6e0ee05d05c924056 *R/summary.EPMgrid.R
 9c568d9e0fbfda63a6c2def4e0205e54 *R/tableFromEpmGrid.R
 aecfd9002430ac944ed0f4c38cff19cc *R/write.epmGrid.R
 cd056a4563336cc1215bb5d108c3cd9b *R/writeEpmSpatial.R
-0c6ad5b3446721162c89589e8077ab1c *build/partial.rdb
+ea124a494ad7922985532ad3b308e4d5 *build/partial.rdb
 4398fc0db1030d8bf4d5cfc94d695250 *data/tamiasEPM.rda
 a4cec0a1d995800135afb93a26956484 *data/tamiasPolyList.rda
 bd7d1e33634c5f6f1f8e802d03a22910 *data/tamiasTraits.rda
 82a9aacb032eb8fd50353ad549c6dd47 *data/tamiasTree.rda
 4ba79c732efb236d7b3ce8d89279e60c *data/tamiasTreeSet.rda
-dbca5a2955fa55b1874dc41ee2d620e3 *inst/CITATION
+4b6e49bd876eb467ca54a1fde8673ede *inst/CITATION
 6fb54de8927ac98bd7d07dda6ce9b1db *man/DRstat.Rd
 454582ab9220971473d13cff26901788 *man/addLegend.Rd
 a152b1f75a547664c3cb60fa0fe9d37d *man/addPhylo.Rd
@@ -59,7 +59,7 @@ bc84f9fece1b0b739307b6784a9a1593 *man/betadiv_phylogenetic.Rd
 402572e105153e3f9ccfa488750df984 *man/betadiv_taxonomic.Rd
 7bf478f5eeb29e1c8ed68ee15b885a15 *man/calcMeanShape.Rd
 3db27c9f2459530245b53c615c246db1 *man/coordsFromEpmGrid.Rd
-e4a032b4d739722e01a4e5e43576560d *man/createEPMgrid.Rd
+685f88fae1ccf33138af529f405031f1 *man/createEPMgrid.Rd
 5967dbb599627a93a67d7d20e4fbcf78 *man/customBetaDiv.Rd
 636284f5b0192a8637647e90bd04605d *man/customGridMetric.Rd
 0fd15bf963864670195189fd78a7ec26 *man/dropSpecies.Rd
