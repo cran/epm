@@ -23,49 +23,49 @@
 ##'
 ##'@details Univariate trait metrics 
 ##'\itemize{ 
-##'    \item{mean} 
-##'    \item{median}
-##'    \item{range} 
-##'    \item{variance}
-##'    \item{mean_NN_dist:} {mean nearest neighbor distance}
-##'    \item{min_NN_dist:} {minimum nearest neighbor distance}
-##'	   \item{evenness:} {variance of nearest neighbor distances, 
-##' 			larger values imply decreasing evenness}
-##'    \item{arithmeticWeightedMean} (see below) 
-##'    \item{geometricWeightedMean} (see below) 
+##'    \item mean
+##'    \item median
+##'    \item range
+##'    \item variance
+##'    \item mean_NN_dist: mean nearest neighbor distance
+##'    \item min_NN_dist: minimum nearest neighbor distance
+##'	   \item evenness: variance of nearest neighbor distances, 
+##' 			larger values imply decreasing evenness
+##'    \item arithmeticWeightedMean (see below)
+##'    \item geometricWeightedMean (see below)
 ##'}
 ##'Multivariate trait metrics 
 ##'\itemize{ 
-##'    \item{disparity}
-##'    \item{partialDisparity:} {contribution of species in each gridcell to 
+##'    \item disparity
+##'    \item partialDisparity: contribution of species in each gridcell to 
 ##'    overall disparity, returned as the ratio of summed partial disparities
-##'    to total disparity.} 
-##'    \item{range} 
-##'    \item{mean_NN_dist:} {mean nearest neighbor distance} 
-##'    \item{min_NN_dist:} {minimum nearest neighbor distance}
-##'	   \item{evenness:} {variance of nearest neighbor distances, 
-##' 		larger values imply decreasing evenness}
+##'    to total disparity.
+##'    \item range
+##'    \item mean_NN_dist: mean nearest neighbor distance 
+##'    \item min_NN_dist: minimum nearest neighbor distance
+##'	   \item evenness: variance of nearest neighbor distances, 
+##' 		larger values imply decreasing evenness.
 ##' } 
 ##' Phylogenetic metrics 
 ##' \itemize{ 
-##'     \item{pd:} {Faith's phylogenetic diversity, including the root} 
-##'     \item{meanPatristic}
-##'     \item{meanPatristicNN:} {mean nearest neighbor in patristic distance}
-##'     \item{minPatristicNN:} {minimum nearest neighbor in patristic distance}
-##'	    \item{phyloEvenness:} {variance of nearest neighbor patristic distances,
-##' 		larger values imply decreasing evenness}
-##'     \item{phyloDisparity:} {sum of squared deviations in patristic distance}
-##'     \item{PSV:} {Phylogenetic Species Variability} 
-##'     \item{PSR:} {Phylogenetic Species Richness} 
-##'     \item{DR:} {non-parametric estimate of speciation rates} 
+##'     \item pd: Faith's phylogenetic diversity, including the root
+##'     \item meanPatristic
+##'     \item meanPatristicNN: mean nearest neighbor in patristic distance
+##'     \item minPatristicNN: minimum nearest neighbor in patristic distance
+##'	    \item phyloEvenness: variance of nearest neighbor patristic distances,
+##' 		larger values imply decreasing evenness
+##'     \item phyloDisparity: sum of squared deviations in patristic distance
+##'     \item PSV: Phylogenetic Species Variability
+##'     \item PSR: Phylogenetic Species Richness
+##'     \item DR: non-parametric estimate of speciation rates
 ##' }
 ##'Range-weighted metrics 
 ##'\itemize{ 
-##'     \item{weightedEndemism:} {Species richness inversely weighted by range size.}
-##'     \item{correctedWeightedEndemism:} {Weighted endemism standardized by 
-##'     species richness} 
-##'     \item{phyloWeightedEndemism:} {Phylogenetic diversity inversely weighted 
-##' 			by range size associated with each phylogenetic branch.} 
+##'     \item weightedEndemism: Species richness inversely weighted by range size.
+##'     \item correctedWeightedEndemism: Weighted endemism standardized by 
+##'     species richness
+##'     \item phyloWeightedEndemism: Phylogenetic diversity inversely weighted 
+##' 			by range size associated with each phylogenetic branch.
 ##' }
 ##'
 ##'If data slot contains a pairwise matrix, \code{column} is ignored. Weighted
@@ -120,21 +120,27 @@
 ##'
 ##' # univariate morphological example
 ##' x <- gridMetrics(tamiasEPM, metric='mean', column='V2')
-##' plot(x)
+##' plot(x, use_tmap = FALSE)
 ##' \donttest{
 ##' # multivariate morphological
 ##' x <- gridMetrics(tamiasEPM, metric='disparity')
-##' plot(x)
+##' plot(x, use_tmap = FALSE)
 ##'
 ##' # phylogenetic metrics
 ##' x <- gridMetrics(tamiasEPM, metric='meanPatristic')
-##' plot(x)
+##' plot(x, use_tmap = FALSE)
 ##' }
 ##'@export
 
+# x <- tamiasEPM
+# x <- addPhylo(x, tamiasTree)
+# x <- addTraits(x, tamiasTraits)
+# metric <- 'disparity'
+# column <- 2:196
+# verbose = TRUE
 
-gridMetrics <- function(x, metric, column = NULL, verbose = TRUE) {
-	
+gridMetrics <- function(x, metric, column = NULL, verbose = FALSE) {
+		
 	if (!inherits(x, 'epmGrid')) {
 		stop('x must be of class epmGrid.')
 	}
@@ -146,10 +152,21 @@ gridMetrics <- function(x, metric, column = NULL, verbose = TRUE) {
 	if (length(metric) > 1) {
 		stop('You can only specify one metric.')
 	}
-	
+		
 	if (inherits(x[['phylo']], 'phylo')) {
 		x[['phylo']] <- list(x[['phylo']])
 		class(x[['phylo']]) <- 'multiPhylo'
+	}
+	
+	debug <- FALSE
+	if (is.character(verbose)) {
+		if (verbose == 'debug') {
+			debug <- TRUE
+		}
+		verbose <- as.logical(verbose)
+	}
+	if (is.na(verbose)) {
+		verbose <- TRUE
 	}
 	
 	metric <- match.arg(metric, choices = c('mean', 'median', 'range', 'variance', 'evenness', 'arithmeticWeightedMean', 'geometricWeightedMean', 'rangePCA', 'disparity', 'mean_NN_dist', 'min_NN_dist', 'pd', 'meanPatristic', 'meanPatristicNN', 'minPatristicNN', 'phyloEvenness', 'phyloDisparity', 'PSV', 'PSR', 'DR', 'weightedEndemism', 'correctedWeightedEndemism', 'phyloWeightedEndemism', 'partialDisparity'))
@@ -160,7 +177,7 @@ gridMetrics <- function(x, metric, column = NULL, verbose = TRUE) {
 	# if data is pairwise matrix, then set flag appropriately
 	if (inherits(x[['data']], c('matrix', 'data.frame'))) {
 		if (identical(rownames(x[['data']]), colnames(x[['data']]))) {
-			if (verbose) message('\t...detected pairwise distance matrix...\n') 
+			# if (verbose) message('\t...detected pairwise distance matrix...\n') 
 			column <- NULL
 			pairwise <- TRUE
 			# make the diagonal NA
@@ -201,6 +218,31 @@ gridMetrics <- function(x, metric, column = NULL, verbose = TRUE) {
 	} else {
 		metricType <- 'none'
 	}
+	
+	if (debug) {
+		message('\tInput dataset:')
+		if (!is.null(x[['data']])) {
+			message('\t\ttrait dataset of class ', class(x[['data']]))
+			if (inherits(x[['data']], c('matrix', 'data.frame'))) {
+				message('\t\t\tdimensions: ', dim(x[['data']])[1], 'x', dim(x[['data']])[2])
+			} else {
+				message('\t\t\tdimensions: length ', length(x[['data']]))
+			}
+			message('\t\t\tThis ', ifelse(pairwise, 'has ', 'has not '), 'been recognized as a pairwise matrix.')
+			message('\t\t\tA ', ifelse(metricType == 'multiVar', 'multivariate ', 'univariate '), 'metric will be calculated.')
+			if (is.null(column)) {
+				message('\t\t\ttrait dataset will not be subset.')
+			} else {
+				message('\t\t\ttrait dataset will be subset to ', length(column), ' of ', ncol(x[['data']]), ' columns.')
+			}
+		}
+		if (!is.null(x[['phylo']])) {
+			message('\t\tphylo dataset of class ', class(x[['phylo']]))
+			message('\t\t\tnumber of trees: ', length(x[['phylo']]))
+			message('\t\t\tnumber of tree tips: ', ape::Ntip(x[['phylo']][[1]]))
+		}
+	}
+	
 	
 	# if a subset of data columns are requested, subset the data table
 	if (!is.null(column) & inherits(x[['data']], c('matrix', 'data.frame'))) {
@@ -273,6 +315,26 @@ gridMetrics <- function(x, metric, column = NULL, verbose = TRUE) {
 	}
 	
 	uniqueComm <- x[['speciesList']]
+
+	if (debug) {
+		message('\n\tInput dataset has now been manipulated:')
+		if (!is.null(x[['data']])) {
+			message('\t\ttrait dataset of class ', class(x[['data']]))
+			if (inherits(x[['data']], c('matrix', 'data.frame'))) {
+				message('\t\t\tdimensions: ', dim(x[['data']])[1], 'x', dim(x[['data']])[2])
+			} else {
+				message('\t\t\tdimensions: length ', length(x[['data']]))
+			}
+			message('\t\t\tThis ', ifelse(pairwise, 'has ', 'has not '), 'been recognized as a pairwise matrix.')
+			message('\t\t\tA ', ifelse(metricType == 'multiVar', 'multivariate ', 'univariate '), 'metric will be calculated.')
+		}
+		if (!is.null(x[['phylo']])) {
+			message('\t\tphylo dataset of class ', class(x[['phylo']]))
+			message('\t\t\tnumber of trees: ', length(x[['phylo']]))
+			message('\t\t\tnumber of tree tips: ', ape::Ntip(x[['phylo']][[1]]))
+		}
+		message()
+	}
 	
 	if (phyloNeeded) {
 		
@@ -382,7 +444,7 @@ calcGridMetric <- function(x, uniqueComm, metric, tree = NULL, dat = NULL, metri
 			resVal[ind] <- pbapply::pbsapply(uniqueComm[ind], function(y) mean(apply(dat[y, y], 1, min, na.rm = TRUE)))
 		} else if (metric == 'min_NN_dist') {
 			resVal[ind] <- pbapply::pbsapply(uniqueComm[ind], function(y) min(apply(dat[y, y], 1, min, na.rm = TRUE)))
-		} else if (metric == 'evennness') {
+		} else if (metric == 'evenness') {
 			resVal[ind] <- pbapply::pbsapply(uniqueComm[ind], function(y) stats::var(apply(dat[y, y], 1, min, na.rm = TRUE)))
 		}
 	}
@@ -479,12 +541,11 @@ calcGridMetric <- function(x, uniqueComm, metric, tree = NULL, dat = NULL, metri
 			# resVal[ind] <- pbapply::pbsapply(uniqueComm[ind], function(y) faithPD(tree, y))
 			
 			spEdges <- ape::nodepath(tree)
+			spEdges <- lapply(spEdges, function(x) setdiff(match(x, tree$edge[,2]), NA))
 			names(spEdges) <- tree$tip.label
 				
 			resVal[ind] <- pbapply::pbsapply(uniqueComm[ind], function(y) {
-				yy <- spEdges[y]
-				yy <- lapply(yy, function(z) setdiff(match(z, tree$edge[,2]), NA))
-				sum(tree$edge.length[unique(unlist(yy))])
+				sum(tree$edge.length[unique(unlist(spEdges[y]))])
 			})
 			
 		}

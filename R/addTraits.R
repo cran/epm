@@ -36,11 +36,11 @@ addTraits <- function(x, data, replace = FALSE, verbose = FALSE) {
 		stop('x must be of class epmGrid.')
 	}
 	
-	if (!inherits(data, c('numeric', 'matrix', 'data.frame'))) {
+	if (!inherits(data, c('numeric', 'integer', 'matrix', 'data.frame'))) {
 		stop('data must be either a numeric vector, matrix or dataframe.')
 	}
 	
-	if (inherits(x[['data']], c('numeric', 'matrix', 'data.frame')) & !replace) {
+	if (inherits(x[['data']], c('numeric', 'integer', 'matrix', 'data.frame')) & !replace) {
 		stop('Data already present. If data are to be replaced, set replace = TRUE')
 	}
 	
@@ -57,7 +57,7 @@ addTraits <- function(x, data, replace = FALSE, verbose = FALSE) {
 			stop('There are no common species in geographic and trait data.')
 		}
 		x[['data']] <- data[traitSpecies]
-	} else if (class(data) %in% c('matrix','data.frame')) {
+	} else if (inherits(data, c('matrix','data.frame'))) {
 		if (is.null(rownames(data))) {
 			stop('Data must have rownames.')
 		}

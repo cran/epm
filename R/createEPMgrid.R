@@ -301,7 +301,11 @@ createEPMgrid <- function(spDat, resolution = 50000, method = 'centroid', cellTy
 			}
 		
 			if (terra::ncell(template) != nrow(spDat)) {
-				stop("Grid template has different number of cells than there are rows in matrix.")
+				if (terra::ncell(template) == ncol(spDat)) {
+					stop("Grid template has different number of cells than there are rows in matrix.\n\tThe matrix may need to be transposed.")
+				} else {
+					stop("Grid template has different number of cells than there are rows in matrix.")
+				}
 			}
 			
 			proj <- terra::crs(template)
@@ -624,6 +628,8 @@ createEPMgrid <- function(spDat, resolution = 50000, method = 'centroid', cellTy
 	# here, we take one of two routes:
 	## if hexagonal grid, then use sf, if square grid, use terra
 	
+	spDat <- lapply(spDat, function(x) sf::st_combine(sf::st_geometry(x)))
+	
 	uniqueSp <- sort(names(spDat))
 	spDat <- spDat[uniqueSp]
 	nGroups <- 1 # placeholder
@@ -729,7 +735,7 @@ createEPMgrid <- function(spDat, resolution = 50000, method = 'centroid', cellTy
 		cellCommVec <- match(matCondensed, uniqueComm)
 		
 		# convert unique community codes to species names
-		uniqueComm <- strsplit(uniqueComm, split = '-')
+		uniqueComm <- strsplit(uniqueComm, split = '-', fixed = TRUE)
 		uniqueComm <- lapply(uniqueComm, as.integer)
 		uniqueComm <- lapply(uniqueComm, function(x) sort(names(spGridList)[as.logical(x)]))
 
@@ -800,7 +806,7 @@ polyToHex <- function(poly, method, percentThreshold, extentVec, resolution, crs
 	
 	# Combine species polygons, keep only geometry, and return single sf object
 	taxonNames <- names(poly)
-	poly <- lapply(poly, function(x) sf::st_combine(sf::st_geometry(x)))
+	# poly <- lapply(poly, function(x) sf::st_combine(sf::st_geometry(x)))
 	poly <- do.call(c, poly)
 	
 	# Generate template
@@ -1274,9 +1280,9 @@ polyToTerra <- function(poly, method, percentThreshold, extentVec, resolution, c
 			
 		} else {
 			
-				# do the extents overlap? If not, then skip
-				if (terra::relate(gridext, terra::ext(terra::vect(x)), relation = 'intersects')[1,1]) {
-			
+			# do the extents overlap? If not, then skip
+			if (terra::relate(gridext, terra::ext(terra::vect(x)), relation = 'intersects')[1,1]) {
+		
 				if (method == 'centroid') {
 					
 					# rasterize polygon against grid (cells register if midpoint is within polygon)
@@ -1292,7 +1298,11 @@ polyToTerra <- function(poly, method, percentThreshold, extentVec, resolution, c
 				} else if (method == 'percentOverlap') {	
 					
 					# rasterize polygon against grid (returns cover fraction per cell)
-					xx <- terra::rasterize(terra::vect(x), gridTemplate, cover = TRUE)
+					if (requireNamespace("exactextractr", quietly = TRUE)) {
+						xx <- exactextractr::coverage_fraction(gridTemplate, x)[[1]]
+					} else {
+						xx <- terra::rasterize(terra::vect(x), gridTemplate, cover = TRUE)
+					}
 					
 					xx[xx < percentThreshold] <- NaN
 					
@@ -1336,8 +1346,17 @@ polyToTerra <- function(poly, method, percentThreshold, extentVec, resolution, c
 				
 				setTxtProgressBar(pb, i)
 				
-				xx <- terra::rasterize(terra::vect(poly[[smallSp[i]]]), gridTemplate, cover = TRUE)
-
+				if (requireNamespace("exactextractr", quietly = TRUE)) {
+					xx <- exactextractr::coverage_fraction(gridTemplate, poly[[smallSp[i]]])[[1]]
+				} else {
+					xx <- terra::rasterize(terra::vect(poly[[smallSp[i]]]), gridTemplate, cover = TRUE)
+					if (all(is.na(terra::minmax(xx)))) {
+						tmp <- terra::cells(gridTemplate, terra::vect(poly[[smallSp[i]]]), exact = TRUE)
+						xx <- terra::rast(gridTemplate, vals = NA)
+						xx[tmp[, 'cell']] <- tmp[, 'weights']
+					}
+				}
+							
 				# exclude some cells if needed
 				if (cellsToExclude) {
 					xx <- terra::mask(xx, gridmask)
@@ -1557,10 +1576,11 @@ occurrenceFormatting <- function(occ) {
 processSiteBySpeciesMatrix <- function(mat, gridTemplate) {
 		
 	taxonNames <- colnames(mat)
-	
-	# force to be 0's or 1's
-	mat[is.na(mat)] <- 0
-	mat[mat != 0] <- 1
+	if (!identical(range(mat), as.integer(c(0, 1)))) {
+		# force to be 0's or 1's
+		mat[is.na(mat)] <- 0
+		mat[mat != 0] <- 1
+	}
 	
 	# create condensed version that encodes species at each site
 	if (requireNamespace('data.table', quietly = TRUE)) {
@@ -1574,7 +1594,7 @@ processSiteBySpeciesMatrix <- function(mat, gridTemplate) {
 	cellCommVec <- match(matCondensed, uniqueComm)
 	
 	# convert unique community codes to species names
-	uniqueComm <- strsplit(uniqueComm, split = '-')
+	uniqueComm <- strsplit(uniqueComm, split = '-', fixed = TRUE)
 	uniqueComm <- lapply(uniqueComm, as.integer)
 	uniqueComm <- lapply(uniqueComm, function(x) sort(taxonNames[as.logical(x)]))
 
