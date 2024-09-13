@@ -70,7 +70,9 @@ addTraits <- function(x, data, replace = FALSE, verbose = FALSE) {
 		
 		if (identical(rownames(data), colnames(data))) {
 			# pairwise matrix
-			x[['data']] <- as.data.frame(data[traitSpecies, traitSpecies], stringsAsFactors = FALSE)
+			x[['data']] <- as.matrix(data[traitSpecies, traitSpecies])
+			# if pairwise distance matrix, set diag to zero, since species identical to self should imply a distance of zero, not NA
+			diag(x[['data']]) <- 0
 		} else {
 			x[['data']] <- as.data.frame(data[traitSpecies,], stringsAsFactors = FALSE)
 		}
