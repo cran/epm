@@ -1,10 +1,10 @@
-886c329fba0646b2f7dbd280404c19d3 *DESCRIPTION
+67200a98c07a9474ba363bf3316fa5ae *DESCRIPTION
 09254be78f5f51877e1e34f645f95a1e *NAMESPACE
 78d740a045bc1352da16b0489a796ca7 *R/DRstat.R
 5501aeaa5944cf3c67768a338d56a48d *R/RcppExports.R
 62de9d5c2c6929171f63c54386cdaecd *R/addLegend.R
 846f92f39399f3f2cd945c42cc6c57d8 *R/addPhylo.R
-45e408721020f0f96fc4877359b0b055 *R/addTraits.R
+103578acef14d2b6ff31cb1407b4961e *R/addTraits.R
 0ffcaebac086557c300fc258f948c936 *R/betadiv_disparity.R
 84201f6a3075850277acbcf126edd9f4 *R/betadiv_phylogenetic.R
 06e2da1d0849470e296a9ebabe2e6e04 *R/betadiv_taxonomic.R
@@ -27,9 +27,9 @@ de0aa03f0eeddd95ff3931058a97f184 *R/generateOccurrenceMatrix.R
 5f9db48a6fa68dee70aa55d99408116d *R/gridMetrics.R
 bef048a422a8bfa1527be4fda19d2a4c *R/identify.epmGrid.R
 85e164390d81f1d80d14bb7ee47889e6 *R/interactiveExtent.R
-803716df4703dce785d16a4fb704db0d *R/plot.epmGrid.R
-c7a33a80b7d6bd00ff234bd1ae99aefc *R/plotDispersionField.R
-5490b65432b79266ffd75bd68d877911 *R/plotSpRange.R
+e41e679253fe8dae906635c99f3da1e9 *R/plot.epmGrid.R
+f843d78693a6f3918cbff8f9e123ae26 *R/plotDispersionField.R
+6e09c3713af06e1967c59fa1ae60e443 *R/plotSpRange.R
 34797dfed9429e77b9d65344103033fc *R/print.epmGrid.R
 6d6a3a1bea33d2163f14bef88c47fe40 *R/rasterToGrid.R
 127289610c64520daf40071da4ff0a4d *R/read.epmGrid.R
@@ -43,7 +43,7 @@ e4fbbd56c6704ea6e0ee05d05c924056 *R/summary.EPMgrid.R
 e5c32bad472f98f9072e4b1a74437c03 *R/tableFromEpmGrid.R
 aecfd9002430ac944ed0f4c38cff19cc *R/write.epmGrid.R
 cd056a4563336cc1215bb5d108c3cd9b *R/writeEpmSpatial.R
-aa5e5a2cbfaea3d9b6cdbe378ac48cee *build/partial.rdb
+76161b65639451c966be75488458b3c3 *build/partial.rdb
 4398fc0db1030d8bf4d5cfc94d695250 *data/tamiasEPM.rda
 a4cec0a1d995800135afb93a26956484 *data/tamiasPolyList.rda
 bd7d1e33634c5f6f1f8e802d03a22910 *data/tamiasTraits.rda
@@ -76,9 +76,9 @@ a44a4727782ee716689ce2a0f6a6c8b1 *man/faithPD.Rd
 8eb91a04e6d12b93da5d9dc8fd4f09fd *man/gridMetrics.Rd
 419ff9347ff079f07f60a519a086b815 *man/identify.Rd
 c47eee8108e607a68c97c6b497109949 *man/interactiveExtent.Rd
-8b79175ed63fb18ad6d32eaa179b3aaa *man/plot.Rd
-fc75b3db8e906200199e8c5e86a9671f *man/plotDispersionField.Rd
-8a839e616901305f3dadeef78bd345af *man/plotSpRange.Rd
+9a8721c57f41f1c7d6d7eea1a616acae *man/plot.Rd
+06b82d212b3e468ddd7e4cdf112ee4e6 *man/plotDispersionField.Rd
+a518b73b3ea3549c84a8d84aa96a84a9 *man/plotSpRange.Rd
 b5f80ae98d5ddf58b6fd86442f4ec2f6 *man/rasterToGrid.Rd
 2020f0780b6f46a28c0c483839750349 *man/read.epmGrid.Rd
 3d64cba65f8152a86189f73680f1204d *man/reduceToCommonTaxa.Rd
