@@ -1,4 +1,4 @@
-67200a98c07a9474ba363bf3316fa5ae *DESCRIPTION
+07c90ba81a4e91a5dcc0e72ada67941c *DESCRIPTION
 09254be78f5f51877e1e34f645f95a1e *NAMESPACE
 78d740a045bc1352da16b0489a796ca7 *R/DRstat.R
 5501aeaa5944cf3c67768a338d56a48d *R/RcppExports.R
@@ -10,7 +10,7 @@
 06e2da1d0849470e296a9ebabe2e6e04 *R/betadiv_taxonomic.R
 7997cf424f639d2a6f29a720dde3c81f *R/calcMeanShape.R
 a31368b3bed9cd5862519e6148a9f7ce *R/coordsFromEpmGrid.R
-6aa306772e59bf5e65b01d67e4397f68 *R/createEPMgrid.R
+98cd010d5e188e65d30de464ee0cf324 *R/createEPMgrid.R
 b005546cf60e0a28b95a4d59ad60f52e *R/customBetaDiv.R
 efd72bed3599a103016c51a4c9aaf046 *R/customGridMetric.R
 093f4b4580e515b81ca3ef5b49976f9f *R/data.R
@@ -43,7 +43,7 @@ e4fbbd56c6704ea6e0ee05d05c924056 *R/summary.EPMgrid.R
 e5c32bad472f98f9072e4b1a74437c03 *R/tableFromEpmGrid.R
 aecfd9002430ac944ed0f4c38cff19cc *R/write.epmGrid.R
 cd056a4563336cc1215bb5d108c3cd9b *R/writeEpmSpatial.R
-76161b65639451c966be75488458b3c3 *build/partial.rdb
+1bf18d9c216b8d95033f0bd2fe2906b2 *build/partial.rdb
 4398fc0db1030d8bf4d5cfc94d695250 *data/tamiasEPM.rda
 a4cec0a1d995800135afb93a26956484 *data/tamiasPolyList.rda
 bd7d1e33634c5f6f1f8e802d03a22910 *data/tamiasTraits.rda
