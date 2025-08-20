@@ -1,4 +1,4 @@
-07c90ba81a4e91a5dcc0e72ada67941c *DESCRIPTION
+2c169ffbdca2296cc440fcfc9c3d0b09 *DESCRIPTION
 09254be78f5f51877e1e34f645f95a1e *NAMESPACE
 78d740a045bc1352da16b0489a796ca7 *R/DRstat.R
 5501aeaa5944cf3c67768a338d56a48d *R/RcppExports.R
@@ -10,7 +10,7 @@
 06e2da1d0849470e296a9ebabe2e6e04 *R/betadiv_taxonomic.R
 7997cf424f639d2a6f29a720dde3c81f *R/calcMeanShape.R
 a31368b3bed9cd5862519e6148a9f7ce *R/coordsFromEpmGrid.R
-98cd010d5e188e65d30de464ee0cf324 *R/createEPMgrid.R
+91bfdc227ce1adde90330606dd766ebf *R/createEPMgrid.R
 b005546cf60e0a28b95a4d59ad60f52e *R/customBetaDiv.R
 efd72bed3599a103016c51a4c9aaf046 *R/customGridMetric.R
 093f4b4580e515b81ca3ef5b49976f9f *R/data.R

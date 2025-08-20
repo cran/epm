@@ -1,12 +1,12 @@
 Package: epm
 Type: Package
 Title: EcoPhyloMapper
-Version: 1.1.5
+Version: 1.1.6
 Authors@R: c(
 	person("Pascal", "Title", email = "pascal.title@stonybrook.edu", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6316-0736")),
 	person("Donald", "Swiderski", role = "aut"),
 	person("Miriam", "Zelditch", role = "aut"))
-Depends: R (>= 4.0)
+Depends: R (>= 4.1.0)
 Imports: terra (>= 1.5-21), sf, ape, viridisLite, pbapply, methods,
         Rcpp (>= 0.12.9), RcppProgress
 Suggests: tmap, data.table, spdep, exactextractr
@@ -20,11 +20,11 @@ LazyData: true
 RoxygenNote: 7.3.2
 ByteCompile: true
 Encoding: UTF-8
-Packaged: 2025-07-03 02:18:09 UTC; pascaltitle
+Packaged: 2025-08-20 18:05:45 UTC; pascaltitle
 Author: Pascal Title [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-6316-0736>),
   Donald Swiderski [aut],
   Miriam Zelditch [aut]
 Maintainer: Pascal Title <pascal.title@stonybrook.edu>
 Repository: CRAN
-Date/Publication: 2025-07-03 17:00:02 UTC
+Date/Publication: 2025-08-20 18:40:07 UTC
